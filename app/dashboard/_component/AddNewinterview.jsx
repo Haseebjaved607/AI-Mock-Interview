@@ -45,6 +45,8 @@ function AddNewInterview() {
 
             try {
                 MockJsonResp = MockJsonRespText.replace(/```json|```/g, ''); // Remove Markdown fences
+                console.log(MockJsonResp);
+                
                 const parsedJson = JSON.parse(MockJsonResp); // Parse JSON
                 console.log(parsedJson);
                 setJsonResponce(parsedJson);

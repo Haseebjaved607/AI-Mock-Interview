@@ -98,8 +98,8 @@ function Interview() {
                             <Webcam
                                 mirrored={true}
                                 style={{
-                                    width: '60rem', // Matches `w-80` (80 x 4 = 320px)
-                                    height: 'rem', // Matches `h-64` (64 x 4 = 256px)
+                                    width: '60rem', // Matches w-80 (80 x 4 = 320px)
+                                    height: 'rem', // Matches h-64 (64 x 4 = 256px)
                                     borderRadius: '14px',
                                 }}
                             />
