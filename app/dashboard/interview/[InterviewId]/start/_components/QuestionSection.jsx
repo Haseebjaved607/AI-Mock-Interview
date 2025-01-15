@@ -1,8 +1,12 @@
-"use client"
-import { Lightbulb, Volume2 } from 'lucide-react';
-import React from 'react';
+"use client";
+import { Lightbulb, Volume2 } from "lucide-react";
+import React from "react";
 
-function QuestionSection({ mockInterviewQuestion, activeQuestionIndex, setActiveQuestionIndex }) {
+function QuestionSection({
+    mockInterviewQuestion,
+    activeQuestionIndex,
+    setActiveQuestionIndex,
+}) {
     const textToSpeech = (text) => {
         if ("speechSynthesis" in window) {
             const speech = new SpeechSynthesisUtterance(text);
@@ -15,31 +19,36 @@ function QuestionSection({ mockInterviewQuestion, activeQuestionIndex, setActive
     return (
         mockInterviewQuestion && (
             <div className="p-5 border rounded-lg my-10">
+                {/* Question Numbering Section */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {mockInterviewQuestion.map((question, index) => (
                         <h2
-                        key={index}
-                        onClick={() => setActiveQuestionIndex(index)} // Update index on click
-                        className={`my-1 p-2 rounded-full text-xs md:text-sm text-center cursor-pointer ${
-                          activeQuestionIndex === index ? 'bg-blue-700 text-white' : 'bg-secondary'
-                        }`}
-                      >
-                        Question # {index + 1}: {question.question}
-                      </h2>
-                      
+                            key={index}
+                            onClick={() => setActiveQuestionIndex(index)}
+                            className={`my-1 p-2 rounded-full text-xs md:text-sm text-center cursor-pointer ${
+                                activeQuestionIndex === index
+                                    ? "bg-blue-700 text-white"
+                                    : "bg-secondary"
+                            }`}
+                        >
+                            Question # {index + 1}
+                        </h2>
                     ))}
                 </div>
+
+                {/* Active Question Content */}
                 <h2 className="my-5 text-md md:text-lg mb-2">
-                    {mockInterviewQuestion[activeQuestionIndex]?.Question}
+                    {mockInterviewQuestion[activeQuestionIndex]?.question}
                 </h2>
 
+                {/* Text-to-Speech Icon */}
                 <Volume2
                     className="cursor-pointer"
                     onClick={() => {
                         if (window.speechSynthesis.speaking) {
                             window.speechSynthesis.cancel();
                         } else {
-                            const text = mockInterviewQuestion[activeQuestionIndex]?.Question;
+                            const text = mockInterviewQuestion[activeQuestionIndex]?.question;
                             if (text) {
                                 const speech = new SpeechSynthesisUtterance(text);
                                 window.speechSynthesis.speak(speech);
@@ -48,6 +57,7 @@ function QuestionSection({ mockInterviewQuestion, activeQuestionIndex, setActive
                     }}
                 />
 
+                {/* Note Section */}
                 <div className="border rounded-lg p-5 bg-blue-100 mt-6">
                     <h2 className="flex gap-2 items-center text-blue-900">
                         <Lightbulb />
@@ -61,6 +71,5 @@ function QuestionSection({ mockInterviewQuestion, activeQuestionIndex, setActive
         )
     );
 }
-
 
 export default QuestionSection;

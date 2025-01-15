@@ -15,7 +15,7 @@ function StartInterview({ params: paramsPromise }) {
 
     const [interviewData, setInterviewData] = useState(null);
     const [mockInterviewQuestion, setMockInterviewQuestion] = useState([]);
-    const [activeQuestionIndex, setActiveQuestionIndex] = useState(1);
+    const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
 
     useEffect(() => {
         if (params?.InterviewId) {
