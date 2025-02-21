@@ -25,11 +25,10 @@ function QuestionSection({
                         <h2
                             key={index}
                             onClick={() => setActiveQuestionIndex(index)}
-                            className={`my-1 p-2 rounded-full text-xs md:text-sm text-center cursor-pointer ${
-                                activeQuestionIndex === index
+                            className={`my-1 p-2 rounded-full text-xs md:text-sm text-center cursor-pointer ${activeQuestionIndex === index
                                     ? "bg-blue-700 text-white"
                                     : "bg-secondary"
-                            }`}
+                                }`}
                         >
                             Question # {index + 1}
                         </h2>
@@ -37,9 +36,11 @@ function QuestionSection({
                 </div>
 
                 {/* Active Question Content */}
+                {/* Active Question Content */}
                 <h2 className="my-5 text-md md:text-lg mb-2">
-                    {mockInterviewQuestion[activeQuestionIndex]?.question}
+                    {mockInterviewQuestion[activeQuestionIndex]?.Question}
                 </h2>
+
 
                 {/* Text-to-Speech Icon */}
                 <Volume2

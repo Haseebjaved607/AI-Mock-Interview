@@ -44,17 +44,20 @@ function AddNewInterview() {
             let MockJsonResp;
 
             try {
-                MockJsonResp = MockJsonRespText.replace(/```json|```/g, ''); // Remove Markdown fences
-                console.log(MockJsonResp);
+                MockJsonResp = MockJsonRespText.replace(/```json|```/g, '').trim(); // Remove Markdown fences and trim spaces
+                // console.log(MockJsonResp);
+                console.log("MockJsonResp", MockJsonResp);
                 
+            
                 const parsedJson = JSON.parse(MockJsonResp); // Parse JSON
                 console.log(parsedJson);
                 setJsonResponce(parsedJson);
             } catch (error) {
-                console.error("Failed to parse JSON:", error);
+                console.error("Failed to parse JSON:", error, "Raw Response:", MockJsonRespText);
                 setLoading(false);
                 return;
             }
+            
 
             const resp = await db.insert(MockInterview)
                 .values({
@@ -116,7 +119,7 @@ function AddNewInterview() {
                                         </div>
                                         <div className='mt-3 my-2 '>
                                             <label className="text-black">Year of experience</label>
-                                            <Input className="mt-1" placeholder="5" type="number" max="30" required
+                                            <Input className="mt-1" placeholder="Ex:05" type="number" max="30" required
                                                 onChange={(event) => setJobExperience(event.target.value)}
                                             />
                                         </div>
