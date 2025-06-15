@@ -1,5 +1,6 @@
 "use client"
 import { UserButton, useUser } from '@clerk/nextjs'
+import Link from 'next/link';
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
@@ -16,29 +17,28 @@ function Header() {
             <div className="flex p-4 items-center justify-between bg-secondary shadow-sm">
                 <img src={"/logo.svg"} width={40} height={70} />
                 <ul className="hidden md:flex gap-6 ">
-                    <li
-                        className={`hover:text-purple-600 transition-all cursor-pointer ${
-                            path === "/dashboard" && "text-purple-600 font-bold"
-                        }`}
-                    >
-                        Dashboard
+                    <li>
+                        <Link href="/" className={`hover:text-purple-600 transition-all cursor-pointer ${path === "/home" && "text-purple-600 font-bold"}`}>
+                            Home
+                        </Link>
                     </li>
-                    <li className={`hover:text-purple-600 transition-all cursor-pointer ${
-                            path === "/Questions" && "text-purple-600 font-bold"
-                        }`}>
-                       Questions
+                    <li>
+                        <Link href="/dashboard" className={`hover:text-purple-600 transition-all cursor-pointer ${path === "/dashboard" && "text-purple-600 font-bold"}`}>
+                            Dashboard
+                        </Link>
                     </li>
-                    <li className={`hover:text-purple-600 transition-all cursor-pointer ${
-                            path === "/Upgrade" && "text-purple-600 font-bold"
-                        }`}>
-                        Upgrade
+                    <li>
+                        <Link href="/questions" className={`hover:text-purple-600 transition-all cursor-pointer ${path === "/questions" && "text-purple-600 font-bold"}`}>
+                            Questions
+                        </Link>
                     </li>
-                    <li className={`hover:text-purple-600 transition-all cursor-pointer ${
-                            path === "/How it work?" && "text-purple-600 font-bold"
-                        }`}>
-                        How it work?
+                    <li>
+                        <Link href="/how-it-works" className={`hover:text-purple-600 transition-all cursor-pointer ${path === "/how-it-works" && "text-purple-600 font-bold"}`}>
+                            How it works?
+                        </Link>
                     </li>
                 </ul>
+
 
                 {/* Conditional Rendering */}
                 {isLoaded && user ? (
